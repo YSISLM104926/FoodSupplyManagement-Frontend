@@ -7,7 +7,6 @@ import AllSupplies from "../MessyComponents/ViewAllSupplies/AllSupplies";
 import SupplyPostCard from "../MessyComponents/SupplyPostCard";
 import AdminSuppliesEdit from "../MessyComponents/AdminComponents/AdminSuppliesEdit/AdminSuppliesEdit";
 import CreateSupply from "../MessyComponents/AdminComponents/CreateSupply/CreateSupply";
-import Chart from "../MessyComponents/Chart";
 import CreateTestimonial from "../MessyComponents/AdminComponents/CreateTestimonial/CreateTestimonial";
 import DonorLeaderboard from "../MessyComponents/DonorLeaderboard";
 import Community from "../MessyComponents/Community";
@@ -67,10 +66,10 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <Dashboard items={items} />,
         children: [
-            {
-                index: true,
-                element: <Chart/>
-            },
+            // {
+            //     index: true,
+            //     element: <Chart/>
+            // },
             {
                 path: 'supply-edit',  // Absolute path starting with /dashboard
                 element: <AdminSuppliesEdit />,

@@ -7,7 +7,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const items = [
   {
     key: "A77101",
-    label: "Dashboard",
+    label: "Chart Page",
     link: "dashboard"
 
   },
