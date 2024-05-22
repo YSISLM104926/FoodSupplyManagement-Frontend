@@ -5,12 +5,18 @@ const CommunityCommentApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         submitCommunityComment: builder.mutation({
             query: (commentData) => ({
-                url: '/community-comments',
+                url: '/community-posts',
                 method: 'POST',
                 body: commentData
+            })
+        }),
+        getCommunityComment: builder.query({
+            query: () => ({
+                url: '/community-posts',
+                method: 'GET',
             })
         })
     })
 })
 
-export const { useSubmitCommunityCommentMutation } = CommunityCommentApi;
+export const { useSubmitCommunityCommentMutation, useGetCommunityCommentQuery } = CommunityCommentApi;

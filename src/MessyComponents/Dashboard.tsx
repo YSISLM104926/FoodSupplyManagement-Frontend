@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Menu } from 'antd';
 import BusinessLogo from '../assets/images/main logo/business_logo.png'
 import { Link, Outlet } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 const { Header, Content, Footer, Sider } = Layout;
 
 const items = [
   {
-    key: "A77101",
+    key: "1",
     label: "Chart Page",
     link: "dashboard"
 
   },
   {
-    key: "A77102",
+    key: "2",
     label: "Supplies",
     link: "supply-edit"
   },
   {
-    key: "A77103",
+    key: "3",
     label: "Create Supply",
     link: "create-supply"
   },
   {
-    key: "A77104",
+    key: "4",
     label: "Create Testimonial",
     link: "create-testimonial"
+  },
+  {
+    key: "5",
+    label: "Community Post",
+    link: "communitypost"
   },
 ]
 
@@ -37,9 +43,29 @@ type MenuItem = {
 type YourComponentProps = {
   items: MenuItem[];
 };
+type userType = {
+  name: string;
+  email: string;
+}
 
 const Dashboard: React.FC<YourComponentProps> = () => {
+  const [token, setToken] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
+  useEffect(() => {
+    const accessToken: string | null = localStorage.getItem('Token');
+    if (accessToken) {
+      setToken(accessToken);
+    }
+  }, []);
 
+  useEffect(() => {
+    if (token) {
+      const { email, name }: userType = jwtDecode(token);
+      setUserEmail(email);
+      setUserName(name);
+    }
+  }, [token]);
   return (
     <Layout style={{
       height: "100vh"
@@ -67,7 +93,9 @@ const Dashboard: React.FC<YourComponentProps> = () => {
               {item.link === 'dashboard' ? (
                 <Link to={`/dashboard`}>{item.label}</Link>
               ) : (
-                <Link to={`/dashboard/${item.link}`}>{item.label}</Link>
+                <Link to={`${item.link === 'communitypost' ?
+                  `/dashboard/${item.link}/${userEmail}` : `/dashboard/${item.link}`
+                  }`}>{item.label}</Link>
               )}
             </Menu.Item>
           ))}

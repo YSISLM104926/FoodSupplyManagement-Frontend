@@ -1,4 +1,5 @@
-import { ToastContainer } from "react-toastify"
+
+import { Toaster } from "sonner"
 import MainLayout from "./components/layout/MainLayout"
 
 
@@ -10,7 +11,7 @@ function App() {
       margin: 'auto',
     }}>
       <MainLayout/>
-      <ToastContainer />
+      <Toaster/>
     </div>
   )
 }

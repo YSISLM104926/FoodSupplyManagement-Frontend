@@ -19,7 +19,7 @@ const AdminSuppliesEdit: React.FC = () => {
       try {
         console.log(id);
         console.log('again asi mama')
-        const response = await fetch(`https://food-supply-management-backend.vercel.app/supplies/${id}`, {
+        const response = await fetch(`http://localhost:5000/supplies/${id}`, {
           method: "DELETE",
         });
 

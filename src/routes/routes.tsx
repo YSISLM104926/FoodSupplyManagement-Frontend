@@ -10,27 +10,36 @@ import CreateSupply from "../MessyComponents/AdminComponents/CreateSupply/Create
 import CreateTestimonial from "../MessyComponents/AdminComponents/CreateTestimonial/CreateTestimonial";
 import DonorLeaderboard from "../MessyComponents/DonorLeaderboard";
 import Community from "../MessyComponents/Community";
+import CommunityPosts from "../MessyComponents/CommunityPosts/CommunityPosts";
+import TestimonialsData from "../MessyComponents/TestimonialsData/TestimonialsData";
+import Volunteer from "../MessyComponents/Volunteer";
+import AboutUsVolunteers from "../MessyComponents/AboutUs/AboutUsVolunteers";
 const items = [
     {
-        key: "A77101",
+        key: "1",
         label: "Dashboard",
         link: "dashboard"
 
     },
     {
-        key: "A77102",
+        key: "2",
         label: "Supplies",
         link: "supply-edit"
     },
     {
-        key: "A77103",
+        key: "3",
         label: "Create Supply",
         link: "create-supply"
     },
     {
-        key: "A77104",
+        key: "4",
         label: "Create Testimonial",
         link: "create-testimonial"
+    },
+    {
+        key: "5",
+        label: "Community Post",
+        link: "communitypost"
     },
 ]
 export const router = createBrowserRouter([
@@ -63,6 +72,18 @@ export const router = createBrowserRouter([
         element: <SupplyPostCard />,
     },
     {
+        path: '/testimonials',
+        element: <TestimonialsData/>,
+    },
+    {
+        path: '/volunteer',
+        element: <Volunteer/>,
+    },
+    {
+        path: '/aboutus',
+        element: <AboutUsVolunteers/>,
+    },
+    {
         path: '/dashboard',
         element: <Dashboard items={items} />,
         children: [
@@ -81,6 +102,10 @@ export const router = createBrowserRouter([
             {
                 path: 'create-testimonial',  // Absolute path starting with /dashboard
                 element: <CreateTestimonial />,
+            },
+            {
+                path: 'communitypost/:userEmail',
+                element: <CommunityPosts />,
             },
         ],
     },

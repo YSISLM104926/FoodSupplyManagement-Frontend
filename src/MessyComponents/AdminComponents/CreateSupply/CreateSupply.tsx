@@ -41,7 +41,7 @@ const CreateSupply = () => {
                 console.log(supp);
 
                 try {
-                    const res = await fetch('https://food-supply-management-backend.vercel.app/supplies', {
+                    const res = await fetch('http://localhost:5000/supplies', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
